@@ -1,7 +1,11 @@
 import express from 'express';
 import { Book } from '../models/bookModel.js';
+import { authenticate } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
+
+// Apply authentication middleware to all book routes
+router.use(authenticate);
 
 
 

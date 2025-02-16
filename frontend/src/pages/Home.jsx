@@ -12,6 +12,11 @@ const Home = () => {
   const [showType, setShowType] = useState('table');
   const [error, setError] = useState(null);
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/login";
+  };
+
   useEffect(() => {
     setLoading(true);
     axios
@@ -30,6 +35,9 @@ const Home = () => {
   return (
     <div className='p-4'>
       <div className='d-flex justify-content-center align-items-center gap-2'>
+      <button className="btn btn-danger btn-sm" onClick={handleLogout}>
+  Logout
+</button>
         <button
           className='btn btn-secondary btn-sm'
           onClick={() => setShowType('table')}
