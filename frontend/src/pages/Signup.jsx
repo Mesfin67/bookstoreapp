@@ -8,13 +8,13 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(""); // Add error state
+  const [error, setError] = useState(""); 
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
 
   const handleSignup = async () => {
     setLoading(true);
-    setError(""); // Clear previous errors
+    setError(""); 
     try {
       const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/signup`, {
         username,
@@ -24,7 +24,7 @@ const Signup = () => {
       enqueueSnackbar("Signup successful", { variant: "success" });
       navigate("/login");
     } catch (error) {
-      setError(error.response?.data?.message || "An error occurred during signup"); // Set error message
+      setError(error.response?.data?.message || "An error occurred during signup"); 
       enqueueSnackbar(error.response?.data?.message || "Error during signup", { variant: "error" });
       console.error(error);
     } finally {
@@ -37,11 +37,11 @@ const Signup = () => {
       <div className="text-center mb-4">
         <h1 className="h3">Welcome to the Bookstore!</h1>
         <p className="small text-muted">
-          Join our community of book lovers. Sign up to explore, create, and manage your favorite books.
+          Join community of book lovers. Sign up to explore, create and manage your favorite books
         </p>
       </div>
       <div className="d-flex flex-column border border-primary rounded p-4 mx-auto" style={{ maxWidth: "600px" }}>
-        {error && <div className="alert alert-danger small">{error}</div>} {/* Display error message */}
+        {error && <div className="alert alert-danger small">{error}</div>} {Error}
         <div className="my-4">
           <label className="h6 mr-4 text-secondary">Username</label>
           <input
