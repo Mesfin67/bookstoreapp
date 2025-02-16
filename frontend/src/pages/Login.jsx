@@ -40,7 +40,7 @@ const Login = () => {
         </p>
       </div>
       <div className="d-flex flex-column border border-primary rounded p-4 mx-auto" style={{ maxWidth: "600px" }}>
-        {error && <div className="alert alert-danger small">{error}</div>} {Error}
+        {error && <div className="alert alert-danger small">{error}</div>} 
         <div className="my-4">
           <label className="h6 mr-4 text-secondary">Username</label>
           <input
