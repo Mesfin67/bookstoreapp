@@ -16,7 +16,7 @@ const Signup = () => {
     setLoading(true);
     setError("");
     try {
-      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/signup`, {
+      const response = await axios.post('https://bookstoreapp-beta.vercel.app/auth/signup', {
         username,
         email,
         password,
