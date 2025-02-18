@@ -24,10 +24,7 @@ const Signup = () => {
       enqueueSnackbar("Signup successful", { variant: "success" });
       navigate("/login");
     } catch (error) {
-      console.error("Full error:", error); 
-      console.error("Error response:", error.response); 
-      console.error("Error message:", error.message); 
-      console.error("Error config:", error.config); 
+      
       setError(error.response?.data?.message || "An error occurred during signup");
       enqueueSnackbar(error.response?.data?.message || "Error during signup", { variant: "error" });
     } finally {
@@ -43,45 +40,47 @@ const Signup = () => {
           Join community of book lovers. Sign up to explore, create and manage your favorite book
         </p>
       </div>
-      <div className="d-flex flex-column border border-primary rounded p-4 mx-auto" style={{ maxWidth: "600px" }}>
-        {error && <div className="alert alert-danger small">{error}</div>}
-        <div className="my-4">
-          <label className="h6 mr-4 text-secondary">Username</label>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            className="form-control border border-secondary px-2 py-1 w-100 small"
-          />
+      <form action="" id="signup-form">
+        <div className="d-flex flex-column border border-primary rounded p-4 mx-auto" style={{ maxWidth: "600px" }}>
+          {error && <div className="alert alert-danger small">{error}</div>}
+          <div className="my-4">
+            <label className="h6 mr-4 text-secondary" htmlFor="username">Username</label>
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              className="form-control border border-secondary px-2 py-1 w-100 small" id="username" autoComplete="username"
+            />
+          </div>
+          <div className="my-4">
+            <label className="h6 mr-4 text-secondary" htmlFor="email">Email</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="form-control border border-secondary px-2 py-1 w-100 small" id="email" autoComplete="email"
+            />
+          </div>
+          <div className="my-4">
+            <label className="h6 mr-4 text-secondary" htmlFor="password">Password</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="form-control border border-secondary px-2 py-1 w-100 small" id="password" autoComplete="new-password"
+            />
+          </div>
+          <button className="btn btn-secondary p-1 m-2 small" onClick={handleSignup} disabled={loading}>
+            {loading ? "Signing up..." : "Signup"}
+          </button>
+          <p className="text-center small">
+            Already have an account?{" "}
+            <Link to="/login" className="text-primary">
+              Login
+            </Link>
+          </p>
         </div>
-        <div className="my-4">
-          <label className="h6 mr-4 text-secondary">Email</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="form-control border border-secondary px-2 py-1 w-100 small"
-          />
-        </div>
-        <div className="my-4">
-          <label className="h6 mr-4 text-secondary">Password</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="form-control border border-secondary px-2 py-1 w-100 small"
-          />
-        </div>
-        <button className="btn btn-secondary p-1 m-2 small" onClick={handleSignup} disabled={loading}>
-          {loading ? "Signing up..." : "Signup"}
-        </button>
-        <p className="text-center small">
-          Already have an account?{" "}
-          <Link to="/login" className="text-primary">
-            Login
-          </Link>
-        </p>
-      </div>
+      </form>
     </div>
   );
 };
