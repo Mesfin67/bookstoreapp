@@ -20,7 +20,7 @@ const Signup = () => {
       return;
     }
     try {
-      const res = await axios.post("http://localhost:4000/api/auth/signup", { email, password });
+      const res = await axios.post("https://bookstoreapp-backend-lnyc.onrender.com/api/auth/signup", { email, password });
       // Redirect to login with success message
       navigate("/login", { state: { message: res.data.message } });
     } catch (err) {

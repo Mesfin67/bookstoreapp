@@ -25,7 +25,7 @@ const Login = ({ handleLogin }) => {
     setError("");
     setSuccessMsg("");
     try {
-      const res = await axios.post("http://localhost:4000/api/auth/login", { email, password });
+      const res = await axios.post("https://bookstoreapp-backend-lnyc.onrender.com/api/auth/login", { email, password });
       handleLogin({ token: res.data.token, email: res.data.email });
       navigate("/mybooks");
     } catch (err) {

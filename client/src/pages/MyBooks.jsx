@@ -13,7 +13,7 @@ const MyBooks = ({ user }) => {
 
   const fetchBooks = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/api/books", config);
+      const res = await axios.get("https://bookstoreapp-backend-lnyc.onrender.com/api/books", config);
       setBooks(res.data);
     } catch (err) {
       setError(err.response?.data?.message || "Error fetching books");
@@ -33,7 +33,7 @@ const MyBooks = ({ user }) => {
     e.preventDefault();
     setError("");
     try {
-      const res = await axios.post("http://localhost:4000/api/books", {
+      const res = await axios.post("https://bookstoreapp-backend-lnyc.onrender.com/api/books", {
         title: newBookData.title,
         author: newBookData.author,
         publishYear: newBookData.publishYear
@@ -49,7 +49,7 @@ const MyBooks = ({ user }) => {
 
   const onDeleteBook = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/api/books/${id}`, config);
+      await axios.delete(`https://bookstoreapp-backend-lnyc.onrender.com/api/books/${id}`, config);
       setBooks(books.filter(book => book._id !== id));
       setMessage("Book deleted successfully");
       setTimeout(() => setMessage(""), 3000);
@@ -60,7 +60,7 @@ const MyBooks = ({ user }) => {
 
   const onEditBook = async (id, updatedData) => {
     try {
-      const res = await axios.put(`http://localhost:4000/api/books/${id}`, updatedData, config);
+      const res = await axios.put(`https://bookstoreapp-backend-lnyc.onrender.com/api/books/${id}`, updatedData, config);
       const updatedBooks = books.map(book => book._id === id ? res.data : book);
       setBooks(updatedBooks);
       setMessage("Book updated successfully");
